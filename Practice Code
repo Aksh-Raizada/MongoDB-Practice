@@ -1,0 +1,170 @@
+test> show dbs
+Practice  72.00 KiB
+admin     40.00 KiB
+config    72.00 KiB
+local     40.00 KiB
+test> use Practice
+switched to db Practice
+Practice> db
+Practice
+Practice> use new1
+switched to db new1
+new1> db
+new1
+new1> db.dropnew1
+new1.dropnew1
+new1> show dbs
+Practice  72.00 KiB
+admin     40.00 KiB
+config    72.00 KiB
+local     40.00 KiB
+new1> use Practice
+switched to db Practice
+Practice> db
+Practice
+Practice> show collections
+Trial
+Practice> db.createCollection('hello')
+{ ok: 1 }
+Practice> show collections
+hello
+Trial
+Practice> db.hello.drop()
+TypeError: db.hello.drop is not a function
+Practice> chow collections
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | chow collections
+    |     ^
+  2 |
+
+Practice> show collections
+hello
+Trial
+Practice> db.hello.drop()
+TypeError: db.hello.drop is not a function
+Practice> db.hello.drop();
+TypeError: db.hello.drop is not a function
+Practice> db.drop(hello)
+ReferenceError: hello is not defined
+Practice> db.drop('hello')
+TypeError: db.drop is not a function
+Practice> show collections
+hello
+Trial
+Practice> db.collection.drop('hello')
+true
+Practice> show collections
+hello
+Trial
+Practice> db.Trial.find()
+[
+  {
+    _id: ObjectId('65abc801d0e7bfa5a0c0027a'),
+    title: 'My first post',
+    content: 'This is the content of my first post'
+  },
+  {
+    _id: ObjectId('65abc877d0e7bfa5a0c0027b'),
+    title: 'My second post',
+    content: 'This is my secont post'
+  },
+  {
+    _id: ObjectId('65abd0772adbaa9d8b81f2b8'),
+    name: 'Aksh',
+    surname: 'Raizada',
+    email: 'aksh.raizada2021@vitbhopal.ac.in'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2b9'),
+    name: 'Prakhar',
+    surname: 'Vaish',
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2ba'),
+    name: 'Aalaap',
+    surname: 'Ghanekar',
+    grade: 'B'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2bb'),
+    name: 'Mudit',
+    surname: 'Shrivastav',
+    grade: 'C'
+  },
+  {
+    _id: ObjectId('65abd3ce2adbaa9d8b81f2bc'),
+    brand: 'Jeep',
+    model: 'Wrangler',
+    date: ISODate('2024-01-20T14:08:14.524Z')
+  }
+]
+Practice> db.Trial.find({grade: 'A'})
+[
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2b9'),
+    name: 'Prakhar',
+    surname: 'Vaish',
+    grade: 'A'
+  }
+]
+Practice> db.comments.insert({
+...     'name': 'Harry',
+...     'lang': 'JavaScript',
+...     'member_since': 5
+...  })
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65aca2022d2b770ddf474fa5') }
+}
+Practice> db.Trial.find()
+[
+  {
+    _id: ObjectId('65abc801d0e7bfa5a0c0027a'),
+    title: 'My first post',
+    content: 'This is the content of my first post'
+  },
+  {
+    _id: ObjectId('65abc877d0e7bfa5a0c0027b'),
+    title: 'My second post',
+    content: 'This is my secont post'
+  },
+  {
+    _id: ObjectId('65abd0772adbaa9d8b81f2b8'),
+    name: 'Aksh',
+    surname: 'Raizada',
+    email: 'aksh.raizada2021@vitbhopal.ac.in'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2b9'),
+    name: 'Prakhar',
+    surname: 'Vaish',
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2ba'),
+    name: 'Aalaap',
+    surname: 'Ghanekar',
+    grade: 'B'
+  },
+  {
+    _id: ObjectId('65abd2262adbaa9d8b81f2bb'),
+    name: 'Mudit',
+    surname: 'Shrivastav',
+    grade: 'C'
+  },
+  {
+    _id: ObjectId('65abd3ce2adbaa9d8b81f2bc'),
+    brand: 'Jeep',
+    model: 'Wrangler',
+    date: ISODate('2024-01-20T14:08:14.524Z')
+  }
+]
+Practice> show collections
+comments
+hello
+Trial
+Practice>
